@@ -5,31 +5,45 @@
 # display a welcome message
 print("The Test Scores application")
 print()
-print("Enter test scores")
-print("Enter 999 to end input")
-print("======================")
 
-# initialize variables
-counter = 0
-score_total = 0
-test_score = 0
+another_set = "y"
 
-while test_score != 999:
-    test_score = int(input("Enter test score: "))
-    if test_score >= 0 and test_score <= 100:
-        score_total += test_score
-        counter += 1
-    elif test_score == 999:
-        break
+while another_set == "y":
+    print("Enter test scores")
+    print("Enter 'end' to end input")
+    print("======================")
+
+    # initialize variables for this set of scores
+    total_score = 0
+    score_count = 0
+
+    while True:
+        user_input = input("Enter test score: ")
+
+        if user_input.lower() == "end":
+            break
+
+        score = int(user_input)
+
+        if score >= 0 and score <= 100:
+            total_score += score
+            score_count += 1
+        else:
+            print("Test score must be from 0 through 100. Try again.")
+
+    # calculate and display the results for this set
+    print("======================")
+    if score_count > 0:
+        average_score = round(total_score / score_count)
+        print("Total Score:", total_score,
+              "\nAverage Score:", average_score)
     else:
-        print("Test score must be from 0 through 100. Score discarded. Try again.")
+        print("No test scores were entered.")
 
-# calculate average score
-average_score = round(score_total / counter)
-                
-# format and display the result
-print("======================")
-print("Total Score:", score_total,
-      "\nAverage Score:", average_score)
-print()
+    print()
+    another_set = input(
+        "Enter another set of test scores (y/n)? "
+    ).lower()
+    print()
+
 print("Bye")
