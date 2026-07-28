@@ -1,3 +1,10 @@
+#!usr/bin/env python3
+
+# Name: Temitope S. Olugbemi
+# Date: 2024-06-05
+# Class Number: DEV108 9084
+# Assignment: Code Practice Lab 5
+
 import random
 
 EASY_LIMIT = 5  # Maximum number of tries for easy difficulty
