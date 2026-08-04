@@ -1,40 +1,51 @@
 # Starting file for Exercise 6.1 in our textbook
 
+import statistics
+
+
 def display_welcome():
     print("The Test Scores program")
     print("Enter 'x' to exit")
     print("")
 
 def get_scores():
-    score_total = 0
-    counter = 0
+    scores = []
     while True:
         score = input("Enter test score: ")
         if score == "x":
-            return  score_total, counter
+            return scores
         else:
             score = int(score)
             if score >= 0 and score <= 100:
-                score_total += score
-                counter += 1 
+                scores.append(score)
             else:
                 print("Test score must be from 0 through 100. " +
                       "Score discarded. Try again.")
 
-def process_scores(score_total, count):
+def process_scores(scores):
     # calculate average score
-    average = score_total / count
-                
+    score_total = sum(scores)
+    count = len(scores)
+    average = round(score_total / count if count > 0 else 0)    
+    lowest = min(scores) if count > 0 else 0
+    highest = max(scores) if count > 0 else 0
+    
+    median_index = count // 2
+    median = statistics.median(scores) if count > 0 else 0
+
     # format and display the result
     print()
     print("Score total:       ", score_total)
     print("Number of Scores:  ", count)
     print("Average Score:     ", average)
+    print("Lowest Score:      ", lowest)
+    print("Highest Score:     ", highest)
+    print("Median Score:      ", median)
 
 def main():
     display_welcome()
-    score_total, count = get_scores()
-    process_scores(score_total, count)
+    scores = get_scores()
+    process_scores(scores)
     print("")
     print("Bye!")
 
