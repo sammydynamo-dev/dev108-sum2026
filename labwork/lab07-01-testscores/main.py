@@ -9,6 +9,7 @@ def display_welcome():
     print("")
 
 def get_scores():
+    # prompt the user to enter test scores until they enter 'x' to exit
     scores = []
     while True:
         score = input("Enter test score: ")
@@ -23,7 +24,7 @@ def get_scores():
                       "Score discarded. Try again.")
 
 def process_scores(scores):
-    # calculate average score
+    # calculate the total, count, average, lowest, highest, and median
     score_total = sum(scores)
     count = len(scores)
     average = round(score_total / count if count > 0 else 0)    
